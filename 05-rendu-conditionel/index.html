@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03-exercices</title>
+    <script src="../vue.global.js"></script>
+
+</head>
+<body>
+    <h1>Le rendu Conditionnel </h1>
+    <div id="app">
+      <p v-if="!disabled">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore vero, eius non ullam voluptatibus nostrum sunt numquam sint? Corporis eos debitis molestiae amet laboriosam enim alias ratione sit eligendi commodi?
+      </p>
+      <p v-if="result === 'hello'">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore vero, eius non ullam voluptatibus nostrum sunt numquam sint? Corporis eos debitis molestiae amet laboriosam enim alias ratione sit eligendi commodi?
+    </p>
+    <a v-else-if="result== 'coucou'" href="#">Khakira</a>
+    <h2 v-else>Je n'ai pas compris</h2>
+    <div>
+        <p v-if="'!disabled'">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores odit ducimus facere dolore dicta! Officiis ipsum, necessitatibus omnis voluptatum facilis, numquam, ex qui ut quos molestiae eius laborum repellat iusto!
+            <main>
+                bonjour
+            </main>
+        </p>
+        <p v-show="'!disabled'">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores odit ducimus facere dolore dicta! Officiis ipsum, necessitatibus omnis voluptatum facilis, numquam, ex qui ut quos molestiae eius laborum repellat iusto!
+           
+        </p>
+    </div>
+    </div>
+    <script>
+        let app = Vue.createApp({
+            data: function(){
+                return{
+                    disabled: false,
+                    result: 'coucou'
+                };
+            }
+        });
+        app.mount("#app")
+    </script>
+</body>
+</html>
