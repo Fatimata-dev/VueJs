@@ -15,21 +15,24 @@
             L'application vue.js se trouvera uniquement dans la div
          -->
          <p>{{ titre }}</p>
-         <a href="">{{message}}</a>
+         
+
+       <a v-bind:href="lienUrl">Lien vers Dawan</a>
+       <button v-bind:disabled="isDisabled">Valider</button>
+       <p v-bind:title="'Lien vers '+ lienUrl">
+           Lorem ipsum dolor sit amet, 
+       </p>
     </div>
     <script>
-        let vm = Vue.createApp({
-            // data represente toute les variavles de notre application vuejs
-            data: function () {
-                const variables = {
-                    titre: 'Bonjour Timfa!!!',
-                    message: 'hi',
-                    date: new Date(),
+        let app = Vue.createApp({
+                data: function() {
+                    return {
+                        lienUrl: "https://dawan.fr",
+                        isDisabled: true
+                    };
                 }
-                return variables
-            }
-        });
-        vm.mount("#app")
+            });
+            app.mount("#app");
     </script>
 </body>
 </html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03-exercices</title>
+    <script src="../vue.global.js"></script>
+
+</head>
+<body>
+    <h1>Exercice</h1>
+    <div id="app">
+        <h2>{{ titre }}</h2>
+        <p> {{ message}} </p>
+        <img :src="lienImg" alt="">
+    </div>
+    <script>
+        let app = Vue.createApp({
+            data: function(){
+                return{
+                    titre: 'exercie',
+                    message: 'Bonjour Fatimata',
+                    lienImg: " https://upload.wikimedia.org/wikipedia/commons/7/78/Akita_inu.jpeg "
+                };
+            }
+        });
+        app.mount("#app")
+    </script>
+</body>
+</html>
