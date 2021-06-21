@@ -1,27 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>exo</title>
-    <script src="../vue.global.js"></script>
-</head>
-<body>
-    <div id="app">
-        <ul>
-            <li>
-
-            </li>
-        </ul>
-    </div>
-
-    <script>
-         import {Employe} from 'index.js'
-        let app = Vue.createApp({
-           
-        });
-        app.mount("#app")
-    </script>
-</body>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <!-- <script src="./classes/employe.js"></script> -->
+        <script src="../vue.global.js"></script>
+        <script type="module" src="app.js" defer></script>
+    </head>
+    <body>
+        <h1>Exercice 2</h1>
+        <div id="app">
+            <h2>Liste des utilisateurs</h2>
+            <!-- <p v-if="personnes.length < 1"> -->
+                <!-- if (0) -> false
+                if (5)  -> true
+                if (-1) -> true -->
+            <p v-if="!personnes.length">
+                Aucun utilisateur
+            </p>
+            <ul v-else>
+                <li v-for="personne of personnes">
+                    {{personne.nom}} {{personne.prenom}}, {{personne.email}}
+                </li>
+            </ul>
+        </div>
+    </body>
 </html>
