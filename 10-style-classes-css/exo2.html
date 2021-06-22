@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styles et clesses css </title>
+    <script src="../vue.global.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+    <h1>Styles et clesses css </h1>
+    <div id="app">
+        <form  @submit="addTab" >
+        <h1>To do list</h1>
+       <label for="toDoList">Taches</label>
+       <input  type="text" name="toDoList" id="toDoList">
+       <input type="submit" name="" id="sub" value="valider">
+       <ul> <h4>Liste</h4>
+           <li v-for="tache of taches ">
+               {{tache}}
+           </li>
+       </ul>
+     
+   
+</form>
+       
+    </div>
+    <script>
+        let app = Vue.createApp({
+            data: function(){
+                return {
+                   taches: []
+                   
+                };
+            },
+            methods:{
+                addTab(e){
+                    e.preventDefault();
+                    tache = toDoList.value
+                    this.taches.push(tache)
+                }
+              
+            }
+        });
+        app.mount("#app")
+    </script>
+</body>
+</html>
