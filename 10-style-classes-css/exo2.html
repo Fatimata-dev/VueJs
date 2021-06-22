@@ -7,22 +7,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Styles et clesses css </title>
     <script src="../vue.global.js"></script>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/exo.css">
 
 </head>
 <body>
     <h1>Styles et clesses css </h1>
     <div id="app">
         <form  @submit="addTab" >
-        <h1>To do list</h1>
+      <fieldset>
+       <legend>To do list</legend>
        <label for="toDoList">Taches</label>
        <input  type="text" name="toDoList" id="toDoList">
-       <input type="submit" name="" id="sub" value="valider">
-       <ul> <h4>Liste</h4>
-           <li v-for="tache of taches ">
+       <input type="submit" name="" id="sub" value="valider" >
+        </fieldset>
+       
+      <h4>Liste </h4>
+        <p v-if="taches.length < 1">Aucune taches disponible</p>
+        <ul v-else>
+           <li v-for="tache of taches "  v-bind:class="{text}">
                {{tache}}
            </li>
        </ul>
+      
      
    
 </form>
@@ -32,14 +38,17 @@
         let app = Vue.createApp({
             data: function(){
                 return {
-                   taches: []
-                   
+                   taches: [],
+                  
+                    text: true
+              
                 };
+               
             },
             methods:{
                 addTab(e){
                     e.preventDefault();
-                    tache = toDoList.value
+                    tache = e.target.toDoList.value
                     this.taches.push(tache)
                 }
               
