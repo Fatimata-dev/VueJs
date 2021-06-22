@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Exercice</title><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <script src="../../../vue.global.js"></script>
+    
+</head>
+<body>
+    <div id="app">
+        <form v-on:submit="addTask">
+            <fieldset>
+                <legend>To Do list</legend>
+                <label for="task">Tache</label>
+                <input type="text" id="task" name="task"/>
+
+                <label for="size">Taille</label>
+                <input type="text" id="size" name="size">
+                <label for="lvl">Etiquette</label>
+            <select name="lvl" id="lvl">
+                
+                <option v-for="option of options" :value="option.valeur">{{ option.label}}</option>
+                
+            </select>
+                <input type="submit" value="Valider" />
+            </fieldset>
+        </form>
+        <h2>Liste des tâches</h2>
+        <p v-if="todos.length < 1">Aucune taches disponibles</p>
+
+        <ul v-else>
+            <li v-for="todo in todos" :class="todo.lvl" :style ="{fontSize: todo.taille}">{{ todo.texte}}</li>
+        </ul>
+    </div>
+
+
+    <script>
+        Vue.createApp({
+    data() {
+        return {
+            todos: [
+                
+            ],
+            options: [ { label: ' Urgent', valeur: 'alert alert-danger'},
+                       {label: 'Important', valeur: 'alert alert-warning'},
+                       {label: 'pas Important', valeur: 'alert alert-info'},
+            ]
+        }
+    },
+    methods: {
+        addTask(event) {
+            const texte = event.target.task.value;
+            const taille = event.target.size.value;
+            const lvl = event.target.lvl.value;
+            const task = {
+                texte :texte,
+                taille,
+                lvl
+            }
+            this.todos.push(task);
+            event.preventDefault();
+        }
+    }
+}).mount("#app");
+    </script>
+</body>
+</html>
