@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <script src="../vue.global.js"></script>
+    
+</head>
+<body>
+    <div id="app">
+
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Titre</th>
+                <th scope="col">Année</th>
+                <th scope="col">Déscription</th>
+                <th scope="col">Supprimer</th>
+              </tr>
+            </thead>
+            <tbody >
+              <tr v-for="(film, index) of films">
+                <th  scope="row">{{index + 1}}</th>
+                <th >{{film.film}}</th>
+                <td>{{film.annee}}</td>
+                <td>{{film.description}}</td>
+                <td @click="deleteFilm"><img src="./resources/delete.svg" alt="" width="20"></td>
+              </tr>
+              
+            </tbody>
+          </table>
+        <form v-on:submit="addfilm">
+            <fieldset>
+                <legend>Ajouter un film</legend>
+                <label for="film">Titre</label>
+                <input type="text" id="film" name="film"/>
+
+                <label for="annee">Année</label>
+                <input type="text" id="annee" name="annee">
+
+                <label for="description">Déscription</label>
+                <textarea name="description" id="description" cols="50" rows="2"></textarea>
+                
+
+                
+                <input type="submit" value="Valider"  />
+            </fieldset>
+        </form>
+    
+
+       
+    </div>
+
+    <script>
+         let app = Vue.createApp({
+                data() {
+                    return {
+                        films: [
+                        
+                        ],
+                    }
+                   
+                },
+                methods:{
+                        addfilm(e){
+                            const film = e.target.film.value;
+                            const annee = e.target.annee.value;
+                            const description = e.target.description.value;
+                            
+                            const add = {
+                                film :film,
+                                annee,
+                                description,
+                                
+                       }
+                       this.films.push(add)
+                       e.preventDefault();
+                        
+                        
+                        },
+                        deleteFilm(index){
+                            this.index.splice();
+                        }
+
+                    }
+            }).mount("#app")
+    </script>
+</body>
+</html>
