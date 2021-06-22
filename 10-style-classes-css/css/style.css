@@ -1,0 +1,12 @@
+.active {
+    color: cornflowerblue;
+}
+.text {
+    color: rgb(8, 102, 102);
+}
+.static {
+    font-size: larger;
+}
+.txt-error{
+    font-weight: bold;
+}

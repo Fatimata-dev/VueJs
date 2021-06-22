@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stules et clesses css </title>
+    <script src="../vue.global.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+    <h1>Stules et clesses css </h1>
+    <div id="app">
+        <!-- nom de la classe: boolean, classe2:boolean -->
+        <h2 v-bind:class="{ active: isActive }">Blue</h2>
+        <p class="static" :class="mesclasses">Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse aut consectetur fugit modi facilis aliquid corrupti at incidunt sit? Error sit temporibus saepe impedit? Consectetur laudantium saepe eaque asperiores aspernatur?</p>
+ 
+    </div>
+    <script>
+        let app = Vue.createApp({
+            data: function(){
+                return {
+                    isActive: true,
+                    mesclasses: {
+                        text: true,
+                        // On peut pas utiliser le spinal-case (txt-error) comme nom de propriété
+                        // pour un objet on doit l'entourer de guillemet ('txt-error')
+                        'txt-error': true
+                    }
+                };
+            },
+            methods:{
+              
+            }
+        });
+        app.mount("#app")
+    </script>
+</body>
+</html>
