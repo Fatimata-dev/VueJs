@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styles et clesses css </title>
+    <script src="../vue.global.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+    <h1>Styles et clesses css </h1>
+    <div id="app">
+        <p v-if="imageUrl== '' ">
+            Il n'y a pas d'image
+        </p>
+        <img v-else :src="imageUrl" alt="animal">
+      
+       <button  @click="changeImg(1)" >Chat</button>
+       <button   @click="changeImg(2)">Chien</button>
+       <button  @click="changeImg(3)" >Lapin</button>
+    </div>
+    <script>
+        let app = Vue.createApp({
+            data: function(){
+                return {
+                    imageUrl: "",
+                   
+                };
+            },
+            methods:{
+              changeImg(nombre){
+                  if (nombre == 1) {
+                      console.log('chat');
+                    this.imageUrl = 'https://www.leparisien.fr/resizer/dxeKDoZ9oIMydrKE4h3nzeFb0CM=/932x582/cloudfront-eu-central-1.images.arcpublishing.com/leparisien/KIOHEM7YJBRED3P2P5FBOREIIM.jpg'
+                  }else if (nombre == 2){
+                    this.imageUrl =  'https://www.notretemps.com/cache/com_zoo_images/c9/nom-chiot_6d24a44af72d79896fcaf95494afbff4.jpg'
+                  }else if (nombre == 3) {
+                     this.imageUrl='https://www.courrierinternational.com/sites/ci_master/files/styles/image_original_1280/public/assets/images/lapin_ok.png?itok=tux0Y4zo' 
+                  }else{
+                    this.imageUrl= ""
+                  }
+                 
+              }
+            }
+        });
+        app.mount("#app")
+    </script>
+</body>
+</html>
