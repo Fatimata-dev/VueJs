@@ -11,20 +11,28 @@
 <body>
     <h1>Les événements </h1>
     <div id="app">
-      
+      <p> {{prenom}} </p>
     <button v-on:click="hello('Fatimata')">Click & collect</button>
-      
+    <button  @click="changeLastname()">Change lastname</button>
+    <input type="text" placeholder="Enter lastName" @input="show($event)">
     </div>
     <script>
         let app = Vue.createApp({
             data: function(){
-                return{
-                    
+                return {
+                    prenom: 'Aicha'
                 };
             },
             methods:{
+                show(e){
+                    console.log(e);
+                    console.log(e.target.value);
+                },
                 hello(prenom) {
                     console.log("Bonjour " + prenom  + "!!!!");
+                },
+                changeLastname(){
+                    this.prenom= "Maryam";
                 }
             }
         });
