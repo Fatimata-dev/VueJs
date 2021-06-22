@@ -15,6 +15,8 @@
     <button v-on:click="hello('Fatimata')">Click & collect</button>
     <button  @click="changeLastname()">Change lastname</button>
     <input type="text" placeholder="Enter lastName" @input="show($event)">
+    <input type="text" v-bind:value="prenom" @change="editprenom">
+    <input type="text" v-model="prenom">
     </div>
     <script>
         let app = Vue.createApp({
@@ -24,6 +26,9 @@
                 };
             },
             methods:{
+                editprenom(event) {
+                    this.prenom = event.target.value;
+                },
                 show(e){
                     console.log(e);
                     console.log(e.target.value);
