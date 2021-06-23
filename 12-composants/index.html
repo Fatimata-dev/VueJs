@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Vuejs</title>
+        <script src="../vue.global.js"></script>
+    </head>
+
+    <body>
+        <h1>Les Composants</h1>
+        <div id="app">
+            <v-header></v-header>
+            <v-card></v-card>
+            <v-body titre="ipsum"></v-body>
+            <v-body v-bind:titre="monTitre"></v-body>
+        </div>
+        <script type="x-template" id="card">
+            <div>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum sapiente porro fugiat facere temporibus nemo. Amet architecto illum pariatur at dolorem? Doloremque asperiores labore enim eaque, odio nulla eius nam.</p>
+                <p>Sint ducimus quaerat blanditiis fuga? Velit, porro tempora. Aspernatur eaque, cupiditate labore fuga natus fugit quod aperiam, soluta facere eveniet ipsum, ab quisquam dicta? Commodi laboriosam cupiditate ratione molestiae fugiat?</p>
+                <p>Fugiat eos ducimus explicabo, facilis minima, at eaque temporibus laudantium dolor aliquid corrupti accusamus impedit nam qui enim culpa, optio fugit ratione saepe? Consequatur dolores consectetur voluptatum voluptas nam aperiam.</p>
+            </div>
+        </script>
+        <script type="module">
+            import bodyComponent from './body.js'
+            let card = {
+                template: `#card`
+            };
+            // app c'est notre site, l'application principale
+            let app = Vue.createApp({
+                data: function() {
+                    return {
+                        monTitre: 'Titre Principal'
+                    };
+                },
+                methods: {
+                },
+                computed: {
+                },
+                watch: {
+                },
+                components: {
+                    'v-card': card,
+                    'v-body': bodyComponent,
+                },
+            });
+            // Enregistrer un composant Global
+            app.component('v-header', {
+                template: `
+                    <h1>Super Header: {{ titre }}</h1>
+                `,
+                data: function() {
+                    return {
+                        titre: 'Hello'
+                    }
+                },
+            });
+
+            let vm = app.mount("#app");
+        </script>
+    </body>
+</html>
