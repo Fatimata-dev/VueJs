@@ -12,7 +12,7 @@
 <body>
     <div id="app">
 
-        <table class="table">
+        <table  v-if="films.length>0" class="table">
             <thead>
               <tr>
                 <th scope="col">#</th>
@@ -28,11 +28,12 @@
                 <th >{{film.film}}</th>
                 <td>{{film.annee}}</td>
                 <td>{{film.description}}</td>
-                <td @click="deleteFilm"><img src="./resources/delete.svg" alt="" width="20"></td>
+                <td @click="deleteFilm(index)"><img src="./resources/delete.svg" alt="" width="20"></td>
               </tr>
               
             </tbody>
           </table>
+        <p v-else>Aucun fimls disponibles</p>
         <form v-on:submit="addfilm">
             <fieldset>
                 <legend>Ajouter un film</legend>
@@ -83,7 +84,7 @@
                         
                         },
                         deleteFilm(index){
-                            this.index.splice();
+                            this.films.splice(index, 1);
                         }
 
                     }
