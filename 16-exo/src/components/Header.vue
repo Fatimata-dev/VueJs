@@ -17,9 +17,13 @@ const Header = {
 export default Header;
 </script>
 <style >
-    header{
+    header {
         display: flex;
         color: white;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #343a40;
+        padding: 10px 15px;
     }
 </style>
 
