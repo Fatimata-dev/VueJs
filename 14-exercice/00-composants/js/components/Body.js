@@ -12,6 +12,7 @@ const Body = {
             titre: 'Good morning'
         }
     },
+    
     components: {
         'v-article': Article
     }
