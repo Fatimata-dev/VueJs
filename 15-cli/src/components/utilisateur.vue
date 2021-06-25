@@ -20,6 +20,13 @@
             <p v-if="newArticle">L'article n°{{ newArticle.id }} à bien été créer</p>
             
         </form>
+        <input type="text" v-model="nomDuFilm" placeholder="ex:Avatar">
+        <button @click="getMovie">Recuperer les Films</button>
+        <ul>
+            <li v-for="film of films" :key="film.id">
+                {{ film.title }}  {{ film.release_date }}
+            </li>
+        </ul>
     </div>
 </template>
 
@@ -29,7 +36,9 @@ import axios from 'axios';
         data() {
             return {
                 utilisateurs: [],
-                newArticle: null
+                films: [],
+                newArticle: null,
+                nomDuFilm: ''
             }
         },
         methods: {
@@ -61,8 +70,14 @@ import axios from 'axios';
                     this.newArticle = reponse.data;
                 }
                 console.log(reponse);
+            },
+            async getMovie(){
+                const URL = "https://api.themoviedb.org/3/search/movie?api_key=123131ea405ceb7ba968916397a05764&language=fr-FR&append_to_response=credits&query="
+                const reponse = await axios.get(URL+this.nomDuFilm)
+                console.log(reponse.data);
+                this.films = reponse.data.results;
             }
-        },
+        }, 
     }
 </script>
 
